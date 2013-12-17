@@ -63,11 +63,18 @@ function PunkAveFileUploader(options)
   {
     self.addExistingFiles(options.existingFiles);
   }
-
+  if (options.sequentialUploads)
+  {
+	  self.sequentialUploads = options.sequentialUploads;
+  }
+  
+  
+  
   editor.fileupload({
     dataType: 'json',
     url: uploadUrl,
     dropZone: $el.find('[data-dropzone="1"]'),
+    sequentialUploads: (options.sequentialUploads)? true:false,
     done: function (e, data) {
       if (data)
       {
